@@ -481,9 +481,12 @@ function countHit() {
 function ensureMusic() {
   if (state.musicStarted) return;
   state.musicStarted = true;
-  const src = ytFrame.getAttribute('src');
-  if (src && !src.includes('autoplay=1')) {
-    ytFrame.src = src + (src.includes('?') ? '&' : '?') + 'autoplay=1';
+  const t = [...PULSE_TRACKS, ...MUSIC_POOL].find(x => ytFrame.src.includes(x.id));
+  if (t) { ytFrame.src = ytSrc(t.id, true); }
+  else {
+    const src = ytFrame.getAttribute('src');
+    if (src) ytFrame.src = src.includes('autoplay=1') ? src
+      : src + (src.includes('?') ? '&' : '?') + 'autoplay=1&enablejsapi=1';
   }
 }
 
@@ -572,9 +575,10 @@ function attackAtChar() {
 
 stage.addEventListener('pointerdown', e => {
   if (!clearOverlay.hidden || !escapeOverlay.hidden) return;
-  if (e.target.closest && e.target.closest('.fs-btn')) return;  // 전체화면 버튼은 타격 아님
+  if (e.target.closest && e.target.closest('.fs-btn')) return;
   const r = stage.getBoundingClientRect();
-  const onChar = !!(e.target.closest && e.target.closest('.char'));
+  // 실제 캐릭터 실루엣(char-hitzone) 위를 눌렀을 때만 히트로 인식
+  const onChar = !!(e.target.closest && e.target.closest('.char-hitzone'));
   attack(e.clientX - r.left, e.clientY - r.top, onChar);
 });
 
@@ -938,9 +942,29 @@ function parseYouTube(url) {
 function markActiveChip(id) {
   $$('.preset').forEach(p => p.classList.toggle('is-on', p.dataset.id === id));
 }
+/* YouTube IFrame API 메시지 수신 — onReady 시 볼륨 50% 적용 */
+window.addEventListener('message', e => {
+  if (e.origin !== 'https://www.youtube.com') return;
+  try {
+    const d = JSON.parse(e.data);
+    if (d.event === 'onReady' && ytFrame.contentWindow) {
+      ytFrame.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: 'setVolume', args: [50] }),
+        'https://www.youtube.com'
+      );
+    }
+  } catch (_) {}
+});
+
+function ytSrc(id, autoplay) {
+  const origin = encodeURIComponent(window.location.origin);
+  return `https://www.youtube.com/embed/${id}?rel=0&enablejsapi=1&origin=${origin}` +
+         (autoplay ? '&autoplay=1' : '');
+}
+
 function playTrack(t, source) {
-  const auto = state.musicStarted ? '&autoplay=1' : '';
-  ytFrame.src = `https://www.youtube.com/embed/${t.id}?rel=0${auto}`;
+  const auto = state.musicStarted;
+  ytFrame.src = ytSrc(t.id, auto);
   ytError.hidden = true;
   $('#nowPlaying').innerHTML = `지금 재생 · <b>${t.label}</b>` +
     (source === 'pulse' ? ' <span class="np-badge">PULSE ORIGIN</span>' : '');
@@ -957,9 +981,10 @@ function playCustom(url) {
   if (!parsed || !parsed.id) { ytError.hidden = false; return false; }
   ytError.hidden = true;
   state.musicStarted = true;   // 사용자가 직접 재생 — 이후 자동재생 유지
+  const origin = encodeURIComponent(window.location.origin);
   ytFrame.src = parsed.type === 'list'
-    ? `https://www.youtube.com/embed/videoseries?list=${parsed.id}&rel=0&autoplay=1`
-    : `https://www.youtube.com/embed/${parsed.id}?rel=0&autoplay=1`;
+    ? `https://www.youtube.com/embed/videoseries?list=${parsed.id}&rel=0&autoplay=1&enablejsapi=1&origin=${origin}`
+    : ytSrc(parsed.id, true);
   $('#nowPlaying').innerHTML = '지금 재생 · <b>내가 붙여넣은 링크</b>';
   markActiveChip('');
   return true;

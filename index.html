@@ -70,7 +70,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/style.css?v=7" />
+  <link rel="stylesheet" href="css/style.css?v=8" />
 </head>
 <body>
 
@@ -165,7 +165,7 @@
       <div class="section-inner section">
         <div class="section__head">
           <h2><span class="dot dot--yellow"></span>스트레스 해소존</h2>
-          <p><b>캐릭터를 직접 클릭해야</b> 데미지가 들어가요. 숫자키 <kbd>1</kbd>~<kbd>5</kbd> 도구 선택, <kbd>Space</kbd> 공격, <kbd>Enter</kbd> 물 바가지. 도망가면 15초 안에 <kbd>5</kbd>번으로 붙잡으세요!</p>
+          <p><b>캐릭터 몸통을 직접 클릭(탭)</b>해야 데미지가 들어가요. 숫자키 <kbd>1</kbd>~<kbd>5</kbd>로 도구 선택, <kbd>Space</kbd>는 자동 공격, <kbd>Enter</kbd>는 물 바가지. 도망가면 15초 안에 <kbd>5</kbd>번으로 붙잡으세요!</p>
         </div>
 
         <div class="smash">
@@ -183,6 +183,7 @@
               </button>
               <div class="char" id="charMove">
                 <div class="char-hit" id="charBox"></div>
+                <div class="char-hitzone" id="charHitzone" aria-hidden="true"></div>
                 <div class="char-bubble" id="charBubble" hidden></div>
               </div>
               <span class="combo" id="combo"></span>
@@ -223,9 +224,10 @@
             </div>
             <div class="keyguide">
               <span><kbd>1</kbd>때리기</span><span><kbd>2</kbd>꼬집기</span><span><kbd>3</kbd>간지럽히기</span>
-              <span><kbd>4</kbd>볼 짜부</span><span><kbd>5</kbd>붙잡기</span><span><kbd>Space</kbd>공격</span><span><kbd>Enter</kbd>물 뿌리기</span>
+              <span><kbd>4</kbd>볼 짜부</span><span><kbd>5</kbd>붙잡기</span>
+              <span><kbd>마우스 클릭</kbd>공격</span><span><kbd>Space</kbd>자동공격</span><span><kbd>Enter</kbd>물 뿌리기</span>
             </div>
-            <p class="stage-hint">캐릭터가 아닌 곳을 누르면 약만 올라요! 3초 방치하면 스트레스가 다시 차오르고, 꾹 누르기(키 반복)는 안 통해요.</p>
+            <p class="stage-hint">캐릭터 몸통을 정확히 눌러야 해요! 빈 곳을 누르면 약만 올려요. 3초 방치하면 스트레스가 다시 차오르고, 꾹 누르기(키 반복)는 안 통해요.</p>
           </div>
 
           <!-- HUD 패널 -->
@@ -282,7 +284,7 @@
         <li>
           <span class="guide-steps__no">3</span>
           <h3>도구를 골라 마음껏 뿌시기</h3>
-          <p>숫자키 <kbd>1</kbd>~<kbd>5</kbd>로 때리기·꼬집기·간지럽히기·볼 짜부·붙잡아 오기를 고르고, <b>캐릭터를 직접 클릭</b>하거나 <kbd>Space</kbd>로 공격해요. 빈 곳을 때리면 놀림만 당해요! <kbd>Enter</kbd>는 물 한 바가지.</p>
+          <p>숫자키 <kbd>1</kbd>~<kbd>5</kbd>로 도구를 고르고, <b>캐릭터 몸통을 직접 클릭</b>해서 공격해요. <kbd>Space</kbd>는 자동조준 공격, <kbd>Enter</kbd>는 물 한 바가지. 빈 공간을 클릭하면 데미지 없이 놀림만 당해요!</p>
         </li>
         <li>
           <span class="guide-steps__no">4</span>
@@ -462,9 +464,9 @@
     <p class="modal__hint" id="modalHint">명함을 주고받는 중…</p>
   </div>
 
-  <script src="js/config.js?v=7"></script>
-  <script src="js/data.js?v=7"></script>
-  <script src="js/ranking.js?v=7"></script>
-  <script src="js/app.js?v=7"></script>
+  <script src="js/config.js?v=8"></script>
+  <script src="js/data.js?v=8"></script>
+  <script src="js/ranking.js?v=8"></script>
+  <script src="js/app.js?v=8"></script>
 </body>
 </html>
