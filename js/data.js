@@ -109,7 +109,25 @@ const ACCESSORIES = {
     <path d="M150 150 A112 112 0 0 1 374 150 Z" fill="#F2B7BD" stroke="#3A3230" stroke-width="8"/>
     <path d="M360 150 q62 2 54 30 q-12 16 -62 4" fill="#D98E9A" stroke="#3A3230" stroke-width="7"/>
     <path class="acc" d="M118 300 h96" stroke="#E04E4E" stroke-width="12"/>
-    <path d="M214 282 l30 18 -30 18" fill="none" stroke="#E04E4E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`
+    <path d="M214 282 l30 18 -30 18" fill="none" stroke="#E04E4E" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>`,
+  phonezombie: `
+    <path d="M224 268 l-24 -46 M288 268 l24 -46" stroke="rgba(74,144,200,.28)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <rect x="202" y="268" width="108" height="70" rx="12" fill="#1D1C1D" stroke="#3A3230" stroke-width="7"/>
+    <rect x="210" y="276" width="92" height="54" rx="6" fill="#4A90C8" stroke="none"/>
+    <rect x="218" y="283" width="16" height="16" rx="4" fill="#E04E4E" stroke="none"/>
+    <rect x="240" y="283" width="16" height="16" rx="4" fill="#ECB22E" stroke="none"/>
+    <rect x="262" y="283" width="16" height="16" rx="4" fill="#2EB67D" stroke="none"/>
+    <rect x="284" y="283" width="16" height="16" rx="4" fill="#7C3085" stroke="none"/>
+    <path d="M218 308 h76 M218 318 h58 M218 328 h66" stroke="rgba(255,255,255,.5)" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <g class="acc"><path d="M158 172 q36 4 72 -6 M354 172 q-36 4 -72 -6"/></g>`,
+  pathblocker: `
+    <rect x="54" y="308" width="64" height="76" rx="9" fill="#FFF" stroke="#3A3230" stroke-width="7"/>
+    <path d="M66 308 q4 -20 20 -24 q16 -4 22 24" fill="none" stroke="#3A3230" stroke-width="6" stroke-linecap="round"/>
+    <path d="M68 332 h38 M68 346 h28 M68 360 h34" stroke="#B9B2AC" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <rect x="394" y="308" width="64" height="76" rx="9" fill="#FFF" stroke="#3A3230" stroke-width="7"/>
+    <path d="M406 308 q4 -20 20 -24 q16 -4 22 24" fill="none" stroke="#3A3230" stroke-width="6" stroke-linecap="round"/>
+    <path d="M408 332 h38 M408 346 h28 M408 360 h34" stroke="#B9B2AC" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <g class="acc"><path d="M156 162 q40 10 78 -2 M362 162 q-40 10 -78 -2"/></g>`
 };
 
 /* 스트레스 유발자 — 카테고리별 3명씩 12명 */
@@ -196,8 +214,16 @@ const CHARACTERS = [
     tags: ['스팸', '대출', '전화', '광고', '피싱'], defaultName: '27통' },
   { id: 'linecutter', name: '새치기범', role: '얌체님', group: 'life', groupLabel: '일상', color: 'pink',
     desc: '줄은 장식, 새치기는 예술. 눈 마주치면 딴청 피우기.',
-    quote: '“저 원래 여기 있었는데요?”',
-    tags: ['새치기', '줄서기', '얌체', '민폐', '오픈런'], defaultName: '쓱치기' }
+    quote: '”저 원래 여기 있었는데요?”',
+    tags: ['새치기', '줄서기', '얌체', '민폐', '오픈런'], defaultName: '쓱치기' },
+  { id: 'phonezombie', name: '폰 좀비', role: '보행자님', group: 'life', groupLabel: '일상', color: 'blue',
+    desc: '걷는 내내 폰만 보다 어깨 쾅. 고개는 태어날 때부터 안 들렸다.',
+    quote: '”(고개를 들지 않는다)”',
+    tags: ['폰', '걸폰', '충돌', '인도', '좀비', '스마트폰'], defaultName: '걸폰좀비' },
+  { id: 'pathblocker', name: '길막러', role: '보행자님', group: 'life', groupLabel: '일상', color: 'mocha',
+    desc: '에스컬레이터 중앙, 복도 정중앙 — 어딜 가나 정확히 가장 불편한 위치를 선택하는 재능인.',
+    quote: '”(뒤를 한 번도 돌아보지 않는다)”',
+    tags: ['길막', '에스컬레이터', '복도', '보행', '느림보', '쇼핑'], defaultName: '가로막이' }
 ];
 
 /* 카테고리 필터 */

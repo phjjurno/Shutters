@@ -135,14 +135,14 @@ section{scroll-margin-top:84px}
 @keyframes starSpin{to{transform:rotate(360deg)}}
 
 /* ---------- 뿌셔존 ---------- */
-.smash{display:grid;grid-template-columns:1fr 330px;gap:28px;align-items:start}
+.smash{display:grid;grid-template-columns:1fr;gap:24px}
 .stage-wrap{min-width:0}
 .nametag{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1.5px solid var(--border);border-radius:999px;padding:9px 10px 9px 18px;font-size:15px;margin-bottom:14px;box-shadow:0 3px 10px rgba(29,28,29,.05)}
 .nametag .icon{width:18px;height:18px;color:var(--accent)}
 .nametag b{font-weight:800}
 .nametag button{border:none;background:#F1EDF1;color:#6b5a6b;border-radius:999px;padding:5px 11px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s}
 .nametag button:hover{background:#e6dee6}
-.stage{position:relative;background:#fff;border:1.5px solid var(--border);border-radius:24px;height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation;cursor:crosshair}
+.stage{position:relative;background:#fff;border:1.5px solid var(--border);border-radius:24px;height:560px;display:flex;align-items:center;justify-content:center;overflow:hidden;user-select:none;-webkit-user-select:none;touch-action:manipulation;cursor:crosshair}
 .stage:fullscreen{height:100vh;border-radius:0;border:none}
 .stage:fullscreen .char-hit .char-svg{width:min(56vh,74vw)}
 .stage:-webkit-full-screen{height:100vh;border-radius:0;border:none}
@@ -157,6 +157,7 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 
 /* 캐릭터 이동(도망) & 타격 래퍼 — 뒤돌아 멀어지며(축소) 뛰어다님 */
 .char{position:relative;transform:translate(var(--tx,0px),var(--ty,0px)) scale(var(--sc,1));will-change:transform}
+.char.sidestep{transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
 .char.escaping{transition:transform .95s ease-in-out}
 .char.grab-return{transition:transform .45s cubic-bezier(.2,1.9,.4,1)}
 .char.walk-return{transition:transform .55s ease}
@@ -165,7 +166,7 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .char.groggy .char-hit{animation:groggySway 1.1s ease-in-out infinite}
 @keyframes groggySway{0%,100%{transform:rotate(-7deg) translateX(-8px)}50%{transform:rotate(7deg) translateX(8px)}}
 .char-hit{will-change:transform}
-.char-hit .char-svg{width:min(310px,56vw);height:auto}
+.char-hit .char-svg{width:min(340px,56vw);height:auto}
 
 /* 캐릭터 말풍선 */
 .char-bubble{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:#fff;border:1.5px solid var(--border);border-radius:999px;padding:7px 15px;font-size:13.5px;font-weight:700;white-space:nowrap;box-shadow:0 6px 16px rgba(29,28,29,.12);z-index:7;animation:bubbleIn .2s ease-out}
@@ -224,8 +225,8 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .fx-pinch i{display:block;width:26px;height:26px;margin:30px auto 0;border-radius:50% 50% 46% 46%;background:rgba(255,120,130,.3);border:3px solid rgba(58,50,48,.5);transform-origin:bottom center;animation:pinchPull .46s cubic-bezier(.3,1.4,.5,1) forwards}
 @keyframes pinchPull{0%{transform:scaleY(1)}45%{transform:scaleY(2.7) translateY(-18px)}100%{transform:scaleY(1)}}
 
-/* 볼 짜부: 양쪽에서 손이 볼을 압착 */
-.fx-squish{position:absolute;z-index:8;top:33%;left:50%;width:min(320px,64vw);height:70px;margin-left:min(-160px,-32vw);pointer-events:none;display:flex;justify-content:space-between;align-items:center}
+/* 볼 짜부: 양쪽에서 손이 볼을 압착 — 위치·폭은 JS가 캐릭터 얼굴에 맞춰 지정 */
+.fx-squish{position:absolute;z-index:8;height:70px;margin-top:-35px;pointer-events:none;display:flex;justify-content:space-between;align-items:center}
 .fx-squish .hand{width:58px;height:58px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.2))}
 .fx-squish .hand--l{animation:squishL .5s cubic-bezier(.3,1.3,.5,1) forwards}
 .fx-squish .hand--r{animation:squishR .5s cubic-bezier(.3,1.3,.5,1) forwards}
@@ -260,8 +261,8 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .clear-char{width:172px;margin:0 auto -4px}
 .clear-char .char-svg{width:100%;animation:chipPop 1.8s ease-in-out infinite}
 
-/* 커스텀 도구 커서 */
-.tool-cursor{position:absolute;z-index:9;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;display:none;align-items:center;justify-content:center;pointer-events:none;box-shadow:0 6px 16px rgba(29,28,29,.3);margin:-22px 0 0 -22px}
+/* 커스텀 도구 커서 — top/left:0 기준점이 없으면 flex 중앙에서부터 이동해 실제 포인터와 어긋난다 */
+.tool-cursor{position:absolute;top:0;left:0;z-index:9;width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;display:none;align-items:center;justify-content:center;pointer-events:none;box-shadow:0 6px 16px rgba(29,28,29,.3);margin:-22px 0 0 -22px}
 .tool-cursor[data-tool="pinch"]{background:var(--accent)}
 .tool-cursor[data-tool="tickle"]{background:var(--green)}
 .tool-cursor[data-tool="squish"]{background:var(--yellow);color:var(--text)}
@@ -278,8 +279,8 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .confetti{position:absolute;top:-12px;width:10px;height:14px;border-radius:2px;pointer-events:none;z-index:11;animation:confettiFall linear forwards}
 @keyframes confettiFall{to{transform:translateY(500px) rotate(720deg);opacity:.2}}
 
-/* HUD (오른쪽 패널) */
-.hud{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:18px}
+/* HUD (스테이지 아래 가로 패널) */
+.hud{background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:22px;display:grid;grid-template-columns:1.15fr 1fr;gap:18px 28px;align-items:center}
 .hud h3{font-size:15px;display:flex;align-items:center;gap:8px;color:#4a4a4a}
 .hud h3 .icon{width:17px;height:17px;color:var(--green)}
 .gauge__row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
@@ -293,7 +294,7 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .stat b{display:block;font-size:17px;font-weight:800}
 .stat span{font-size:11.5px;color:#8a8a8a;font-weight:500}
 .stat b.is-title{font-size:13px;color:var(--primary)}
-.tools{display:flex;flex-direction:column;gap:8px}
+.tools{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tool-btn{position:relative;display:flex;align-items:center;gap:10px;border:1.5px solid var(--border);background:#fff;border-radius:999px;padding:10px 16px 10px 10px;font-weight:700;font-size:14px;color:#5a5a5a;cursor:pointer;transition:.15s;text-align:left;overflow:hidden}
 .tool-btn .icon{width:19px;height:19px;flex:0 0 auto}
 .tool-btn .key{width:26px;height:26px;border-radius:50%;background:#F1EDF1;color:#6b5a6b;font-size:12.5px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
@@ -306,7 +307,7 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .tool-btn--water .key{background:#E3F1FA;color:var(--accent)}
 .tool-btn--water.cooling{pointer-events:none;color:#9ec4dd}
 .tool-btn--water .cool{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--accent);border-radius:999px}
-.hud__foot{display:flex;gap:8px;flex-wrap:wrap}
+.hud__foot{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
 
 /* ---------- 명함 교환 모달 ---------- */
 .modal{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:20px}
@@ -445,9 +446,10 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 
 /* ---------- 반응형 ---------- */
 @media (max-width:960px){
-  .smash{grid-template-columns:1fr}
   .hero__art{flex-basis:230px}
   .yt,.rank-wrap{grid-template-columns:1fr}
+  .hud{grid-template-columns:1fr;align-items:stretch}
+  .tools{grid-template-columns:1fr 1fr}
 }
 @media (max-width:680px){
   .nav{display:none}
@@ -459,6 +461,7 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
   .section{padding-top:52px;padding-bottom:52px}
   .sort{margin-left:0}
   .stage{height:410px}
+  .tools{grid-template-columns:1fr}
   .rank-name{min-width:84px;font-size:13px}
   .contact-card{padding:26px}
 }
