@@ -8,6 +8,6 @@
    - supabaseAnonKey: Supabase 프로젝트의 anon public 키 (공개돼도 되는 키)
    ============================================================ */
 window.SHUTRESS_CONFIG = {
-  supabaseUrl: '',
-  supabaseAnonKey: ''
+  supabaseUrl: 'https://eumocvkejlbfsemmkmwr.supabase.co',
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV1bW9jdmtlamxiZnNlbW1rbXdyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQxODc1NzEsImV4cCI6MjA5OTc2MzU3MX0.92uB2cKWVMi9voqd1DgDA7PPOWQ0b--o4F23OtHoBIk'
 };
