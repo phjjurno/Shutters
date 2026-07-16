@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4A154B"/><stop offset=".6" stop-color="#611f69"/><stop offset="1" stop-color="#7C3085"/>
+    </linearGradient>
+    <radialGradient id="body" cx="38%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#E7BF8B"/><stop offset="1" stop-color="#A87848"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- 두두 캐릭터 -->
+  <g transform="translate(830,150) scale(0.62)">
+    <ellipse cx="256" cy="502" rx="118" ry="16" fill="#000" opacity=".18"/>
+    <g fill="url(#body)">
+      <rect x="120" y="260" width="66" height="145" rx="33" transform="rotate(8 153 332)"/>
+      <rect x="326" y="260" width="66" height="145" rx="33" transform="rotate(-8 359 332)"/>
+      <rect x="175" y="415" width="74" height="66" rx="28"/><rect x="263" y="415" width="74" height="66" rx="28"/>
+      <rect x="151" y="238" width="210" height="215" rx="93"/><circle cx="256" cy="180" r="128"/>
+    </g>
+    <ellipse cx="186" cy="216" rx="17" ry="10" fill="rgba(255,120,130,.32)"/>
+    <ellipse cx="326" cy="216" rx="17" ry="10" fill="rgba(255,120,130,.32)"/>
+    <ellipse cx="213" cy="171" rx="15" ry="23" fill="#151515"/><ellipse cx="299" cy="171" rx="15" ry="23" fill="#151515"/>
+    <path d="M221 225 Q256 260 291 225 Q286 205 256 205 Q226 205 221 225Z" fill="#4B1E1E"/>
+  </g>
+  <!-- 로고 마크 (쉿) -->
+  <g transform="translate(96,150)" fill="none" stroke="#ECB22E" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="34" cy="44" r="26"/><path d="M22 40q4-4.5 8 0M42 40q4-4.5 8 0"/>
+    <path d="M62 8l2.5 5.5M74 16l-5.5 2.5M67 4l-1 6"/>
+  </g>
+  <rect x="90" y="120" width="6" height="30" rx="3" fill="#ECB22E"/>
+  <text x="96" y="300" font-family="Inter, sans-serif" font-size="92" font-weight="800" fill="#fff" letter-spacing="-2">서트레스</text>
+  <text x="100" y="360" font-family="Inter, sans-serif" font-size="34" font-weight="800" fill="#ECB22E" letter-spacing="4">SHUTRESS · SHUT THE STRESS</text>
+  <text x="98" y="452" font-family="Inter, sans-serif" font-size="40" font-weight="500" fill="rgba(255,255,255,.9)">오늘 받은 스트레스,</text>
+  <text x="98" y="508" font-family="Inter, sans-serif" font-size="40" font-weight="700" fill="#fff">오늘 다 뿌셔버려.</text>
+</svg>

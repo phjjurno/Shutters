@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DUDU Stress Game Prototype</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="game">
+    <header>
+      <strong>STRESS</strong>
+      <div class="meter"><i id="stressFill"></i></div>
+      <span id="score">0</span>
+    </header>
+    <section id="stage" class="stage" aria-label="캐릭터를 눌러보세요">
+      <img id="character" src="../assets/character/dudu_base.svg" alt="두두 캐릭터">
+      <div id="particles"></div>
+    </section>
+    <p>클릭하거나 탭해서 스트레스를 날려보세요</p>
+  </main>
+  <script src="./game.js"></script>
+</body>
+</html>

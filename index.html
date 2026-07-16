@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>서트레스 SHUTRESS — Shut the Stress | 스트레스 해소 게임</title>
+  <meta name="description" content="서트레스(SHUTRESS)는 교수님·직장 상사·진상 손님 등 스트레스 유발자를 골라 때리고 꼬집고 물 뿌리며 푸는 무료 스트레스 해소 게임입니다. 회원가입 없이 브라우저에서 바로, Shut the Stress!" />
+  <meta name="keywords" content="스트레스 해소, 스트레스 해소 게임, 화풀이, 교수님, 직장상사, 진상손님, 클릭 게임, 힐링, SHUTRESS, 서트레스" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#4A154B" />
+  <!-- ▼ 배포 후 실제 도메인으로 교체하세요 (og:url, JSON-LD url 포함) -->
+  <link rel="canonical" href="https://shutress.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="서트레스 SHUTRESS" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:title" content="서트레스 SHUTRESS — Shut the Stress" />
+  <meta property="og:description" content="오늘 받은 스트레스, 오늘 다 뿌셔버려. 스트레스 유발자를 골라 마음껏 뿌시는 무료 브라우저 게임." />
+  <meta property="og:url" content="https://shutress.com/" />
+  <meta property="og:image" content="https://shutress.com/assets/og.svg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="서트레스 SHUTRESS — Shut the Stress" />
+  <meta name="twitter:description" content="스트레스 유발자를 골라 마음껏 뿌시는 무료 브라우저 게임." />
+  <meta name="twitter:image" content="https://shutress.com/assets/og.svg" />
+  <!-- ▲ 배포 후 실제 도메인으로 교체 -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg fill='none' stroke='%234A154B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='14' cy='18' r='10.5'/%3E%3Cpath d='M9.2 16.2q1.6-1.8 3.2 0M18.6 16.2q1.6-1.8 3.2 0'/%3E%3Cpath d='M25 3.5l1 2.2M29.5 6.5l-2.2 1M27 1.5l-.4 2.4'/%3E%3C/g%3E%3Crect x='12.8' y='9.5' width='2.4' height='12.5' rx='1.2' fill='%234A154B'/%3E%3C/svg%3E" />
+  <!-- 애드센스: 승인 후 아래 주석을 해제하세요 (본인 게시자 ID 확인)
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8501673409971666" crossorigin="anonymous"></script>
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "서트레스 SHUTRESS",
+        "alternateName": "Shut the Stress",
+        "url": "https://shutress.com/",
+        "inLanguage": "ko"
+      },
+      {
+        "@type": "WebApplication",
+        "name": "서트레스 SHUTRESS",
+        "url": "https://shutress.com/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Web",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+        "description": "스트레스 유발자를 골라 때리고 꼬집으며 푸는 무료 스트레스 해소 브라우저 게임"
+      },
+      {
+        "@type": "Organization",
+        "name": "SHUTRESS",
+        "url": "https://shutress.com/",
+        "contactPoint": { "@type": "ContactPoint", "email": "vspo2@yonsei.ac.kr", "contactType": "customer support" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "서트레스는 정말 무료인가요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "네, 100% 무료입니다. 회원가입이나 설치 없이 브라우저에서 바로 즐길 수 있으며, 운영을 위해 일부 페이지에 광고가 표시될 수 있습니다." } },
+          { "@type": "Question", "name": "제가 입력한 이름이나 기록이 서버로 전송되나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "명함에 적는 이름은 브라우저 화면에서만 쓰이고 저장·전송되지 않습니다. 게임 기록은 기본적으로 이 기기(localStorage)에만 저장되며, 통합 랭킹을 켠 경우 캐릭터별 집계 숫자만 개인 식별 정보 없이 전송됩니다." } },
+          { "@type": "Question", "name": "특정 사람을 겨냥한 서비스인가요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "아니요. 모든 캐릭터와 상황은 가상의 창작물이며 실제 인물·단체와 무관합니다. 서트레스는 스트레스를 잠시 환기하는 놀이일 뿐 실제 공격이나 혐오를 조장하지 않습니다." } },
+          { "@type": "Question", "name": "어떻게 조작하나요?",
+            "acceptedAnswer": { "@type": "Answer", "text": "도구는 숫자키 1~5, 공격은 캐릭터를 직접 클릭하거나 Space, 물 뿌리기는 Enter입니다. 캐릭터가 도망가면 15초 안에 5번(붙잡아 오기)으로 잡아야 하며, 모바일에서는 캐릭터를 탭하면 됩니다." } }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="css/style.css?v=5" />
+</head>
+<body>
+
+  <!-- ===================== 헤더 ===================== -->
+  <header class="header">
+    <a class="logo" href="./" aria-label="서트레스 홈">
+      <svg class="icon logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="14" cy="18" r="10.5"/>
+        <path d="M9.2 16.2q1.6-1.8 3.2 0M18.6 16.2q1.6-1.8 3.2 0"/>
+        <rect x="12.8" y="9.5" width="2.4" height="12.5" rx="1.2" fill="currentColor" stroke="none"/>
+        <path d="M25 3.5l1 2.2M29.5 6.5l-2.2 1M27 1.5l-.4 2.4"/>
+      </svg>
+      <span><b>서트레스</b><small>SHUTRESS · SHUT THE STRESS</small></span>
+    </a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#pick">대상 고르기</a>
+      <a href="#smash">해소존</a>
+      <a href="#guide">가이드</a>
+      <a href="#rank">랭킹</a>
+      <a href="#playlist">플레이리스트</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#pick" class="btn btn--sm">지금 뿌시기</a>
+  </header>
+
+  <main>
+    <!-- ===================== 히어로 ===================== -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <span class="hero__badge">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
+            SHUT THE STRESS.
+          </span>
+          <h1>오늘 받은 스트레스,<br /><em>오늘 다 뿌셔버려.</em></h1>
+          <p class="hero__sub">교수님, 부장님, 진상 손님… 현실에선 웃어야 했잖아요.
+            서트레스에서는 마음껏 때리고, 꼬집고, 물을 뿌려도 아무도 다치지 않아요.</p>
+          <div class="hero__btns">
+            <a href="#pick" class="btn btn--yellow">
+              <svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
+              뿌시러 가기
+            </a>
+            <a href="#playlist" class="btn btn--ghost" style="color:#fff;border-color:rgba(255,255,255,.4)">
+              <svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              플레이리스트 켜기
+            </a>
+          </div>
+        </div>
+        <div class="hero__art" id="heroArt">
+          <span class="hero__chip hero__chip--1">퍽!</span>
+          <span class="hero__chip hero__chip--2">아얏!</span>
+          <span class="hero__chip hero__chip--3">첨벙!</span>
+        </div>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stats-inner">
+          <span>내 누적 타격 <b id="heroHits">0</b>회</span>
+          <span>완전 해소 <b id="heroClears">0</b>건</span>
+          <span>최다 피격 <b id="heroTop">아직 없음</b></span>
+          <span style="margin-left:auto">이 기기 기준 실시간 집계</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 대상 고르기 ===================== -->
+    <section id="pick" class="section">
+      <div class="section__head">
+        <h2><span class="dot dot--green"></span>누구부터 뿌셔볼까요?</h2>
+        <p>오늘 나를 괴롭힌 그 사람, 카테고리에서 골라주세요. 명함을 받으면 이름도 붙일 수 있어요.</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="search">
+          <svg class="icon icon--sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="searchInput" type="search" placeholder="이름·특징으로 검색 (예: 과제, 회의, 환불)" />
+        </label>
+        <div class="filters" id="filterPills"></div>
+        <select class="sort" id="sortSelect" aria-label="정렬">
+          <option value="pop">많이 뿌신 순</option>
+          <option value="name">이름순</option>
+        </select>
+      </div>
+
+      <div class="grid" id="charGrid"></div>
+      <p class="empty" id="emptyMsg" hidden>검색 결과가 없어요. 다른 키워드로 찾아보세요!</p>
+    </section>
+
+    <aside class="ad-placeholder" aria-label="광고 영역"><div>AD — 애드센스 승인 후 광고 코드가 들어갈 자리</div></aside>
+
+    <!-- ===================== 스트레스 해소존 ===================== -->
+    <section id="smash" class="section--tint">
+      <div class="section-inner section">
+        <div class="section__head">
+          <h2><span class="dot dot--yellow"></span>스트레스 해소존</h2>
+          <p><b>캐릭터를 직접 클릭해야</b> 데미지가 들어가요. 숫자키 <kbd>1</kbd>~<kbd>5</kbd> 도구 선택, <kbd>Space</kbd> 공격, <kbd>Enter</kbd> 물 바가지. 도망가면 15초 안에 <kbd>5</kbd>번으로 붙잡으세요!</p>
+        </div>
+
+        <div class="smash">
+          <!-- 스테이지 -->
+          <div class="stage-wrap">
+            <div class="nametag">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="11" r="2"/><path d="M6 16c.8-1.6 5.2-1.6 6 0M15 9h4M15 13h3"/></svg>
+              <span id="nameTagText"></span>
+              <button id="renameBtn" type="button">이름 바꾸기</button>
+            </div>
+
+            <div class="stage" id="stage">
+              <button class="fs-btn" id="fsBtn" type="button" title="전체화면" aria-label="전체화면 전환">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+              </button>
+              <div class="char" id="charMove">
+                <div class="char-hit" id="charBox"></div>
+                <div class="char-bubble" id="charBubble" hidden></div>
+              </div>
+              <span class="combo" id="combo"></span>
+              <span class="stage-tag stage-tag--rest" id="groggyTag" hidden>GROGGY! 3초 해롱해롱 · 공격 불가</span>
+              <span class="stage-tag stage-tag--esc" id="escapeTag" hidden></span>
+              <div class="tool-cursor" id="toolCursor" data-tool="punch"></div>
+
+              <!-- 완전 해소: 1단계 질문 → 2단계 축하 -->
+              <div class="clear-overlay" id="clearOverlay" hidden>
+                <div id="clearAsk">
+                  <div class="clear-char" id="clearChar"></div>
+                  <h3>…스트레스 좀 풀렸어?</h3>
+                  <p>퉁퉁 부은 <b id="clearAskName"></b>이(가) 눈치를 봅니다.</p>
+                  <div class="btns">
+                    <button class="btn" id="clearNo">아니, 아직! 😤</button>
+                    <button class="btn btn--ghost" id="clearYes">응, 시원해 😮‍💨</button>
+                  </div>
+                </div>
+                <div id="clearDone" hidden>
+                  <h3>스트레스 <span>완전 해소!</span> 🎉</h3>
+                  <p><b id="clearName"></b>은(는) 그로기 상태… 오늘 하루도 수고했어요.</p>
+                  <div class="btns">
+                    <button class="btn" id="againBtn">한 번 더 뿌시기</button>
+                    <a class="btn btn--ghost" href="#pick">다른 대상 고르기</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 도망 성공(15초 경과) 오버레이 -->
+              <div class="clear-overlay" id="escapeOverlay" hidden>
+                <h3>🏃💨 <b id="escName"></b>이(가) 도망갔습니다…</h3>
+                <p>15초 안에 붙잡지 못했어요. 다음엔 <kbd>5</kbd>번으로 더 빠르게!</p>
+                <div class="btns">
+                  <button class="btn" id="escRetry">다시 데려오기</button>
+                  <a class="btn btn--ghost" href="#pick" id="escPick">다른 대상 고르기</a>
+                </div>
+              </div>
+            </div>
+            <div class="keyguide">
+              <span><kbd>1</kbd>때리기</span><span><kbd>2</kbd>꼬집기</span><span><kbd>3</kbd>간지럽히기</span>
+              <span><kbd>4</kbd>볼 짜부</span><span><kbd>5</kbd>붙잡기</span><span><kbd>Space</kbd>공격</span><span><kbd>Enter</kbd>물 뿌리기</span>
+            </div>
+            <p class="stage-hint">캐릭터가 아닌 곳을 누르면 약만 올라요! 3초 방치하면 스트레스가 다시 차오르고, 꾹 누르기(키 반복)는 안 통해요.</p>
+          </div>
+
+          <!-- HUD 패널 -->
+          <aside class="hud">
+            <div>
+              <div class="gauge__row">
+                <h3><svg class="icon" viewBox="0 0 24 24"><path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="M22 4L12 14l-3-3"/></svg>스트레스 해소율</h3>
+                <b id="reliefPct">0%</b>
+              </div>
+              <div class="bar"><i id="reliefBar"></i></div>
+              <p class="regen" id="regenTag" hidden>
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8"/></svg>
+                방치 중 — 스트레스가 다시 차오르는 중!
+              </p>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><b id="hitCount">0</b><span>이번 판 타격</span></div>
+              <div class="stat"><b id="bestCombo">0</b><span>최고 콤보</span></div>
+              <div class="stat"><b class="is-title" id="userTitle">뿌린이</b><span>칭호</span></div>
+            </div>
+
+            <div class="tools" id="toolBtns"></div>
+
+            <div class="hud__foot">
+              <button class="btn btn--ghost btn--sm" id="resetBtn">
+                <svg class="icon icon--sm" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+                처음부터 다시
+              </button>
+              <a class="btn btn--ghost btn--sm" href="#pick">대상 바꾸기</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 이렇게 즐기세요 (가이드) ===================== -->
+    <section id="guide" class="section">
+      <div class="section__head">
+        <h2><span class="dot dot--green"></span>이렇게 즐기세요</h2>
+        <p>서트레스는 설치도, 회원가입도 필요 없어요. 브라우저만 있으면 3초 안에 스트레스 해소를 시작할 수 있습니다.</p>
+      </div>
+      <ol class="guide-steps">
+        <li>
+          <span class="guide-steps__no">1</span>
+          <h3>오늘의 스트레스 유발자 고르기</h3>
+          <p>학교·직장·가게·일상 카테고리에서 20명의 봉제인형 캐릭터 중 나를 괴롭힌 그 사람을 검색·필터로 찾아 선택해요.</p>
+        </li>
+        <li>
+          <span class="guide-steps__no">2</span>
+          <h3>명함 받고 이름 붙이기</h3>
+          <p>선택한 캐릭터가 명함을 건네요. 명함 뒷면에 실제 이름(별명)을 적으면 훨씬 통쾌해집니다. 걱정 마세요, 어떤 정보도 저장·전송되지 않아요.</p>
+        </li>
+        <li>
+          <span class="guide-steps__no">3</span>
+          <h3>도구를 골라 마음껏 뿌시기</h3>
+          <p>숫자키 <kbd>1</kbd>~<kbd>5</kbd>로 때리기·꼬집기·간지럽히기·볼 짜부·붙잡아 오기를 고르고, <b>캐릭터를 직접 클릭</b>하거나 <kbd>Space</kbd>로 공격해요. 빈 곳을 때리면 놀림만 당해요! <kbd>Enter</kbd>는 물 한 바가지.</p>
+        </li>
+        <li>
+          <span class="guide-steps__no">4</span>
+          <h3>해소율 100% 달성하기</h3>
+          <p>가끔 등을 돌리고 도망가요 — <b>15초 안에 <kbd>5</kbd>번으로 붙잡지 못하면 놓쳐버려요!</b> 가끔 그로기(해롱해롱)로 3초 쉬어가기도 해요. 해소율 100%를 채우면 오늘의 스트레스 완전 해소.</p>
+        </li>
+      </ol>
+      <p class="guide-note">
+        서트레스의 캐릭터와 상황은 모두 가상의 창작물이며, 현실의 특정 인물을 겨냥하지 않습니다.
+        말랑한 봉제인형을 두드리며 잠시 웃고 기분을 환기하는, 누구도 다치지 않는 안전한 화풀이 놀이터예요.
+      </p>
+    </section>
+
+    <!-- ===================== 랭킹 ===================== -->
+    <section id="rank" class="section">
+      <div class="section__head">
+        <h2><span class="dot dot--purple"></span>실시간 뿌셔 랭킹</h2>
+        <p id="rankNote">이 기기에서 실제로 집계된 기록이에요. 누가 제일 많이 맞았을까요?</p>
+        <div class="rank-toggle" id="rankToggle" hidden>
+          <button data-mode="global" class="is-on">🌐 전국 통합</button>
+          <button data-mode="local">📱 이 기기</button>
+        </div>
+      </div>
+      <div class="rank-wrap">
+        <ol class="rank-list" id="rankList"></ol>
+        <div class="my-stats">
+          <h3><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg>내 기록</h3>
+          <ul>
+            <li>누적 타격 <b id="msHits">0</b></li>
+            <li>완전 해소 <b id="msClears">0</b></li>
+            <li>최고 콤보 <b id="msCombo">0</b></li>
+            <li>물벼락 <b id="msWaters">0</b></li>
+            <li>포획 성공 <b id="msGrabs">0</b></li>
+          </ul>
+          <p class="note">기록은 이 브라우저(localStorage)에만 저장돼요. 전국 통합 랭킹은 준비 중!</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="ad-placeholder" aria-label="광고 영역"><div>AD — 애드센스 승인 후 광고 코드가 들어갈 자리</div></aside>
+
+    <!-- ===================== 플레이리스트 ===================== -->
+    <section id="playlist" class="section">
+      <div class="section__head">
+        <h2><span class="dot dot--blue"></span>뿌시면서 듣는 플레이리스트</h2>
+        <p>때리기 시작하면 음악이 자동으로 재생돼요. 유튜브 링크를 붙여넣어 원하는 곡으로 바꿀 수도 있어요.</p>
+      </div>
+
+      <div class="yt">
+        <div>
+          <div class="yt__player">
+            <iframe id="ytFrame" src="" title="YouTube 플레이어"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+          </div>
+          <p class="now-playing" id="nowPlaying"></p>
+        </div>
+        <div class="yt__side">
+          <label for="ytInput">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg>
+            유튜브 링크 붙여넣기
+          </label>
+          <div class="yt__form">
+            <input id="ytInput" type="url" placeholder="https://www.youtube.com/watch?v=..." />
+            <button class="btn btn--accent" id="ytBtn">재생</button>
+          </div>
+          <p class="yt__error" id="ytError" hidden>링크를 확인해주세요. 유튜브 영상/플레이리스트 주소만 재생할 수 있어요.</p>
+          <p class="yt__label">PULSE ORIGIN 추천
+            <button class="link" id="shuffleBtn" type="button">🔀 랜덤 재생</button>
+          </p>
+          <div class="yt__presets" id="ytPresets"></div>
+          <p class="yt__tip">영상 주소(watch?v=…), 짧은 주소(youtu.be/…), 플레이리스트(list=…) 모두 지원해요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section id="faq" class="section">
+      <div class="section__head">
+        <h2><span class="dot dot--green"></span>자주 묻는 질문</h2>
+        <p>서트레스에 대해 많이 궁금해하시는 내용을 모았어요.</p>
+      </div>
+      <div class="faq">
+        <details class="faq__item" open>
+          <summary>서트레스는 정말 무료인가요?</summary>
+          <p>네, 100% 무료입니다. 회원가입이나 설치 없이 브라우저에서 바로 즐길 수 있어요. 운영을 위해 일부 페이지에 광고가 표시될 수 있습니다.</p>
+        </details>
+        <details class="faq__item">
+          <summary>제가 입력한 이름이나 기록이 서버로 전송되나요?</summary>
+          <p>명함에 적는 이름은 이 브라우저 화면에서만 쓰이고 어디에도 저장·전송되지 않아요. 타격 수·완전 해소 같은 게임 기록은 기본적으로 이 기기(브라우저 localStorage)에만 저장됩니다. 전국 통합 랭킹 기능을 켠 경우에는 캐릭터별 집계 숫자만(개인 식별 정보 없이) 전송돼요.</p>
+        </details>
+        <details class="faq__item">
+          <summary>특정 사람을 겨냥한 서비스인가요?</summary>
+          <p>아니에요. 모든 캐릭터와 상황은 가상의 창작물이며 실제 인물·단체와 무관합니다. 서트레스는 현실의 스트레스를 잠시 웃으며 환기하는 놀이일 뿐, 누군가를 향한 실제 공격이나 혐오를 조장하지 않습니다.</p>
+        </details>
+        <details class="faq__item">
+          <summary>어떻게 조작하나요?</summary>
+          <p>도구는 숫자키 1~5, 공격은 캐릭터를 직접 클릭(또는 Space), 물 뿌리기는 Enter예요. 빈 곳을 누르면 데미지 없이 놀림만 당하니 캐릭터를 정확히 노리세요! 도망가면 15초 안에 5번(붙잡아 오기)으로 잡아야 해요. 모바일에서는 캐릭터를 탭하면 돼요.</p>
+        </details>
+        <details class="faq__item">
+          <summary>배경 음악은 어디서 나오나요?</summary>
+          <p>하단 플레이리스트에서 유튜브 링크를 붙여넣어 원하는 음악을 틀 수 있어요. 접속 시에는 추천 트랙이 랜덤으로 준비됩니다. 음원의 저작권은 각 채널·아티스트에게 있으며, 서트레스는 유튜브 임베드 방식으로 재생만 연결합니다.</p>
+        </details>
+        <details class="faq__item">
+          <summary>기록을 초기화하고 싶어요.</summary>
+          <p>브라우저의 사이트 데이터(쿠키·저장소)를 삭제하면 이 기기의 게임 기록이 초기화됩니다. 해소존의 "처음부터 다시" 버튼은 현재 판만 리셋해요.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===================== 문의 ===================== -->
+    <section id="contact" class="section">
+      <div class="contact-card">
+        <div class="contact-card__txt">
+          <h3>문의 · Contact</h3>
+          <p>버그 제보, 캐릭터 추가 제안, <b>플레이리스트 광고(트랙 노출)</b>·제휴 문의 모두 환영해요. 보통 2~3일 안에 답변드립니다.</p>
+        </div>
+        <a class="btn" href="mailto:vspo2@yonsei.ac.kr">
+          <svg class="icon icon--sm" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 7l9 6 9-6"/></svg>
+          vspo2@yonsei.ac.kr
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== 푸터 ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="logo">
+        <svg class="icon logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="14" cy="18" r="10.5"/>
+          <path d="M9.2 16.2q1.6-1.8 3.2 0M18.6 16.2q1.6-1.8 3.2 0"/>
+          <rect x="12.8" y="9.5" width="2.4" height="12.5" rx="1.2" fill="currentColor" stroke="none"/>
+          <path d="M25 3.5l1 2.2M29.5 6.5l-2.2 1M27 1.5l-.4 2.4"/>
+        </svg>
+        <span><b>서트레스</b><small>SHUT THE STRESS.</small></span>
+      </span>
+      <nav class="footer__links" aria-label="정책 및 문의">
+        <a href="privacy.html">개인정보처리방침</a>
+        <a href="terms.html">이용약관</a>
+        <a href="mailto:vspo2@yonsei.ac.kr">문의</a>
+      </nav>
+      <p>화면 속 인물은 모두 가상의 봉제인형 캐릭터예요.<br/>© 2026 SHUTRESS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ===================== 명함 교환 모달 ===================== -->
+  <div class="modal" id="cardModal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="exchange">
+      <div class="greeter" id="greeter" aria-hidden="true"></div>
+      <div class="biz-card biz-card--mine">
+        <p class="biz-card__brand">SHUTRESS MEMBERSHIP</p>
+        <h3>나</h3>
+        <p>오늘도 꿋꿋이 버티는 중</p>
+        <p class="biz-card__foot">STRESS LEVEL : MAX</p>
+      </div>
+      <div class="biz-card biz-card--theirs">
+        <div class="biz-card__flip">
+          <div class="biz-face biz-face--front">
+            <p class="biz-card__brand">명함이 도착했습니다</p>
+            <div class="biz-face__mini" id="cardMini"></div>
+            <p>스트레스 유발자 등장…</p>
+          </div>
+          <div class="biz-face biz-face--back">
+            <p class="biz-card__brand" id="cardRole"></p>
+            <label for="nameInput">이 분의 성함을 적어주세요 (최대 10자)</label>
+            <input id="nameInput" maxlength="10" autocomplete="off" />
+            <div class="biz-face__btns">
+              <button class="btn btn--sm" id="cardConfirm">등록하고 뿌시러 가기</button>
+              <button class="link" id="cardSkip">건너뛰기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="modal__hint" id="modalHint">명함을 주고받는 중…</p>
+  </div>
+
+  <script src="js/config.js?v=5"></script>
+  <script src="js/data.js?v=5"></script>
+  <script src="js/ranking.js?v=5"></script>
+  <script src="js/app.js?v=5"></script>
+</body>
+</html>

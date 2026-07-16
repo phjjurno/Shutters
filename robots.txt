@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 애드센스 크롤러 명시 허용
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://shutress.com/sitemap.xml

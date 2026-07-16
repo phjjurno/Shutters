@@ -1,0 +1,13 @@
+/* ============================================================
+   서트레스 SHUTRESS — 백엔드 설정
+   전역(전국) 통합 랭킹을 켜려면 아래 두 값을 채우세요.
+   비워 두면 자동으로 "이 기기(localStorage) 전용"으로 동작합니다.
+
+   설정 방법은 같은 폴더의 SETUP-BACKEND.md 를 참고하세요.
+   - supabaseUrl   : 예) https://xxxxxxxx.supabase.co
+   - supabaseAnonKey: Supabase 프로젝트의 anon public 키 (공개돼도 되는 키)
+   ============================================================ */
+window.SHUTRESS_CONFIG = {
+  supabaseUrl: '',
+  supabaseAnonKey: ''
+};

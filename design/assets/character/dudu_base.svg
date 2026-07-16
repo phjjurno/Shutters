@@ -1,0 +1,23 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="body" cx="38%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#E7BF8B"/>
+      <stop offset="100%" stop-color="#A87848"/>
+    </radialGradient>
+    <filter id="shadow"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <ellipse cx="256" cy="472" rx="115" ry="18" fill="#000" opacity=".22" filter="url(#shadow)"/>
+  <g id="character">
+    <rect x="151" y="238" width="210" height="215" rx="93" fill="url(#body)"/>
+    <circle cx="256" cy="180" r="128" fill="url(#body)"/>
+    <rect x="120" y="260" width="66" height="145" rx="33" fill="url(#body)" transform="rotate(8 153 332)"/>
+    <rect x="326" y="260" width="66" height="145" rx="33" fill="url(#body)" transform="rotate(-8 359 332)"/>
+    <rect x="175" y="415" width="74" height="66" rx="28" fill="url(#body)"/>
+    <rect x="263" y="415" width="74" height="66" rx="28" fill="url(#body)"/>
+    <ellipse id="eye-left" cx="213" cy="171" rx="15" ry="23" fill="#151515"/>
+    <ellipse id="eye-right" cx="299" cy="171" rx="15" ry="23" fill="#151515"/>
+    <path id="mouth" d="M221 225 Q256 260 291 225 Q286 205 256 205 Q226 205 221 225Z" fill="#4B1E1E"/>
+    <path d="M235 232 Q256 245 277 232" stroke="#B96060" stroke-width="9" stroke-linecap="round"/>
+    <path d="M176 313 h42 v42 h-42 z" fill="none" stroke="#765236" stroke-width="4" stroke-dasharray="7 5"/>
+  </g>
+</svg>
