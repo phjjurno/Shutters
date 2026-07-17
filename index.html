@@ -94,10 +94,31 @@
       <a href="#guide">가이드</a>
       <a href="#rank">랭킹</a>
       <a href="#playlist">플레이리스트</a>
+      <a href="#board">게시판</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="#pick" class="btn btn--sm">지금 뿌시기</a>
+    <div class="header-actions">
+      <button id="authBtn" class="btn btn--sm">로그인</button>
+      <a href="#pick" class="btn btn--sm" style="display:none">지금 뿌시기</a>
+    </div>
   </header>
+
+  <!-- 로그인 모달 -->
+  <div id="authModal" class="modal modal--auth" hidden>
+    <div class="modal__backdrop"></div>
+    <div class="modal__box">
+      <button class="modal__close" id="authClose">&times;</button>
+      <h2>서트레스</h2>
+      <form id="authForm">
+        <input type="email" id="authEmail" placeholder="이메일" required />
+        <input type="password" id="authPassword" placeholder="비밀번호" required />
+        <input type="text" id="authUsername" placeholder="닉네임 (회원가입시)" />
+        <button type="submit" id="authSubmit" class="btn btn--primary">로그인</button>
+        <p id="authToggle" style="text-align:center;margin-top:12px;font-size:14px"><a href="javascript:" style="color:var(--primary)">회원가입</a></p>
+        <p id="authMsg" style="color:red;font-size:13px;text-align:center;margin-top:8px"></p>
+      </form>
+    </div>
+  </div>
 
   <main>
     <!-- ===================== 히어로 ===================== -->
@@ -364,6 +385,23 @@
       </div>
     </section>
 
+    <!-- ===================== 게시판 ===================== -->
+    <section id="board" class="section">
+      <div class="section__head">
+        <h2><span class="dot dot--blue"></span>커뮤니티</h2>
+        <p>다른 사람들과 경험을 나눠보세요.</p>
+      </div>
+      <div class="board__write" id="boardWrite" hidden>
+        <form id="boardForm">
+          <textarea id="boardContent" placeholder="오늘 뿌신 캐릭터는?" maxlength="300" rows="3" required></textarea>
+          <button type="submit" class="btn btn--primary">글 올리기</button>
+          <button type="button" class="btn btn--ghost" id="boardCancel">취소</button>
+        </form>
+      </div>
+      <button id="boardNewBtn" class="btn btn--primary">첫 후기 남기기</button>
+      <div class="board__list" id="boardList"></div>
+    </section>
+
     <!-- ===================== FAQ ===================== -->
     <section id="faq" class="section">
       <div class="section__head">
@@ -467,9 +505,148 @@
     <p class="modal__hint" id="modalHint">명함을 주고받는 중…</p>
   </div>
 
-  <script src="js/config.js?v=9"></script>
-  <script src="js/data.js?v=9"></script>
-  <script src="js/ranking.js?v=9"></script>
-  <script src="js/app.js?v=9"></script>
+  <script src="js/config.js?v=10"></script>
+  <script src="js/data.js?v=10"></script>
+  <script src="js/ranking.js?v=10"></script>
+  <script src="js/auth.js?v=10"></script>
+  <script src="js/board.js?v=10"></script>
+  <script src="js/app.js?v=10"></script>
+  <script>
+    // 로그인 모달
+    const authModal = document.getElementById('authModal');
+    const authBtn = document.getElementById('authBtn');
+    const authClose = document.getElementById('authClose');
+    const authForm = document.getElementById('authForm');
+    const authEmail = document.getElementById('authEmail');
+    const authPassword = document.getElementById('authPassword');
+    const authUsername = document.getElementById('authUsername');
+    const authSubmit = document.getElementById('authSubmit');
+    const authMsg = document.getElementById('authMsg');
+    const authToggle = document.getElementById('authToggle');
+    const boardWrite = document.getElementById('boardWrite');
+    const boardNewBtn = document.getElementById('boardNewBtn');
+    const boardForm = document.getElementById('boardForm');
+    const boardCancel = document.getElementById('boardCancel');
+    const boardList = document.getElementById('boardList');
+
+    let isSignUp = false;
+
+    authBtn.addEventListener('click', () => {
+      authModal.hidden = false;
+      isSignUp = false;
+      authSubmit.textContent = '로그인';
+      authUsername.hidden = true;
+    });
+
+    authClose.addEventListener('click', () => {
+      authModal.hidden = true;
+      authMsg.textContent = '';
+    });
+
+    authModal.querySelector('.modal__backdrop').addEventListener('click', () => {
+      authModal.hidden = true;
+    });
+
+    authToggle.addEventListener('click', e => {
+      e.preventDefault();
+      isSignUp = !isSignUp;
+      authSubmit.textContent = isSignUp ? '가입' : '로그인';
+      authUsername.hidden = !isSignUp;
+      authToggle.innerHTML = isSignUp ? '<a href="javascript:" style="color:var(--primary)">로그인</a>' : '<a href="javascript:" style="color:var(--primary)">회원가입</a>';
+    });
+
+    authForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = authEmail.value.trim();
+      const password = authPassword.value.trim();
+      const username = authUsername.value.trim() || email.split('@')[0];
+      authMsg.textContent = '';
+      authSubmit.disabled = true;
+
+      const result = isSignUp
+        ? await Auth.signUp(email, password, username)
+        : await Auth.signIn(email, password);
+
+      if (result.error) {
+        authMsg.textContent = result.error;
+      } else {
+        authModal.hidden = true;
+        authForm.reset();
+        authEmail.value = '';
+        authPassword.value = '';
+        updateAuthUI();
+        loadBoard();
+      }
+      authSubmit.disabled = false;
+    });
+
+    boardNewBtn.addEventListener('click', () => {
+      if (!Auth.getUser()) {
+        authModal.hidden = false;
+        return;
+      }
+      boardWrite.hidden = false;
+      boardNewBtn.hidden = true;
+    });
+
+    boardCancel.addEventListener('click', () => {
+      boardWrite.hidden = true;
+      boardNewBtn.hidden = false;
+      boardForm.reset();
+    });
+
+    boardForm.addEventListener('submit', async e => {
+      e.preventDefault();
+      const content = document.getElementById('boardContent').value.trim();
+      if (!content) return;
+      const result = await Board.createPost(content, state.charId || null);
+      if (!result.error) {
+        boardForm.reset();
+        boardWrite.hidden = true;
+        boardNewBtn.hidden = false;
+        loadBoard();
+      }
+    });
+
+    async function updateAuthUI() {
+      const user = Auth.getUser();
+      if (user) {
+        authBtn.textContent = user.email.split('@')[0] + ' / 로그아웃';
+        authBtn.onclick = async () => {
+          await Auth.signOut();
+          authBtn.textContent = '로그인';
+          authBtn.onclick = null;
+          boardWrite.hidden = true;
+          boardNewBtn.hidden = false;
+          loadBoard();
+        };
+      }
+    }
+
+    async function loadBoard() {
+      const posts = await Board.fetchPosts(20);
+      const user = Auth.getUser();
+      boardList.innerHTML = posts.map(p => {
+        const timeAgo = new Date(p.created_at);
+        const now = new Date();
+        const diff = Math.floor((now - timeAgo) / 1000);
+        const timeStr = diff < 60 ? '방금' : diff < 3600 ? Math.floor(diff / 60) + '분' : diff < 86400 ? Math.floor(diff / 3600) + '시간' : Math.floor(diff / 86400) + '일';
+        return `
+          <div class="board__item">
+            <div class="board__head">
+              <strong>${p.username}</strong>
+              <small>${timeStr} 전</small>
+              ${user?.id === p.user_id ? `<button class="board__del" onclick="Board.deletePost(${p.id}).then(()=>loadBoard())">삭제</button>` : ''}
+            </div>
+            <p>${p.content.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    Auth.getSession();
+    updateAuthUI();
+    loadBoard();
+  </script>
 </body>
 </html>

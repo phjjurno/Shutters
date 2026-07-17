@@ -457,6 +457,27 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
   .hud{grid-template-columns:1fr;align-items:stretch}
   .tools{grid-template-columns:1fr 1fr}
 }
+/* ---------- 인증 & 게시판 ---------- */
+.header-actions{display:flex;gap:12px;margin-left:auto}
+.modal--auth{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center}
+.modal--auth .modal__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.modal--auth .modal__box{position:relative;width:min(100%,380px);background:#fff;padding:32px;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal__close{position:absolute;top:12px;right:12px;width:32px;height:32px;border:none;background:none;cursor:pointer;font-size:24px}
+.modal--auth h2{margin-bottom:20px;font-size:20px}
+.modal--auth input{width:100%;padding:10px 12px;margin-bottom:12px;border:1px solid var(--border);border-radius:6px;font-size:14px}
+.modal--auth .btn--primary{width:100%;margin-top:8px}
+.board__write{background:#F6F4F6;padding:20px;border-radius:12px;margin-bottom:20px}
+.board__write textarea{width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:14px;resize:vertical}
+.board__write .btn{margin-top:12px;margin-right:8px}
+.board__list{display:grid;gap:12px}
+.board__item{background:#F6F4F6;padding:16px;border-radius:8px}
+.board__head{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px}
+.board__head strong{font-weight:700;color:var(--primary)}
+.board__head small{color:#9a8f9a}
+.board__del{background:none;border:none;color:#c44;font-size:12px;cursor:pointer;text-decoration:underline;padding:0}
+.board__item p{font-size:14px;line-height:1.5;word-break:break-word}
+.dot--blue{background:#1264A3}
+
 @media (max-width:680px){
   .nav{display:none}
   .header .btn{margin-left:auto}
