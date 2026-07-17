@@ -70,7 +70,7 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/style.css?v=12" />
+  <link rel="stylesheet" href="css/style.css?v=13" />
 </head>
 <body>
 
@@ -108,14 +108,15 @@
     <div class="modal__backdrop"></div>
     <div class="modal__box">
       <button class="modal__close" id="authClose">&times;</button>
-      <h2>서트레스</h2>
+      <h2 id="authTitle">프로필 만들기</h2>
+      <p id="authIntro" style="font-size:13px;color:#8a8a8a;margin:-8px 0 14px">이메일 없이 아이디만으로 가볍게 시작해요.</p>
       <form id="authForm">
-        <input type="email" id="authEmail" placeholder="이메일" required />
-        <input type="password" id="authPassword" placeholder="비밀번호" required />
-        <input type="text" id="authUsername" placeholder="닉네임 (회원가입시)" />
-        <button type="submit" id="authSubmit" class="btn btn--primary">로그인</button>
-        <p id="authToggle" style="text-align:center;margin-top:12px;font-size:14px"><a href="javascript:" style="color:var(--primary)">회원가입</a></p>
-        <p id="authMsg" style="color:red;font-size:13px;text-align:center;margin-top:8px"></p>
+        <input type="text" id="authId" placeholder="아이디 (영문·숫자)" autocomplete="username" required />
+        <input type="password" id="authPassword" placeholder="비밀번호 (6자 이상)" autocomplete="current-password" required />
+        <input type="text" id="authUsername" placeholder="닉네임" maxlength="16" />
+        <button type="submit" id="authSubmit" class="btn btn--primary">프로필 만들기</button>
+        <p id="authToggle" style="text-align:center;margin-top:12px;font-size:14px">이미 프로필이 있어요 <a href="javascript:" style="color:var(--primary);font-weight:700">로그인</a></p>
+        <p id="authMsg" style="color:#c44;font-size:13px;text-align:center;margin-top:8px"></p>
       </form>
     </div>
   </div>
@@ -527,39 +528,54 @@
     <p class="modal__hint" id="modalHint">명함을 주고받는 중…</p>
   </div>
 
-  <script src="js/config.js?v=12"></script>
-  <script src="js/data.js?v=12"></script>
-  <script src="js/ranking.js?v=12"></script>
-  <script src="js/auth.js?v=12"></script>
-  <script src="js/board.js?v=12"></script>
-  <script src="js/app.js?v=12"></script>
-  <script src="js/share.js?v=12"></script>
+  <script src="js/config.js?v=13"></script>
+  <script src="js/data.js?v=13"></script>
+  <script src="js/ranking.js?v=13"></script>
+  <script src="js/auth.js?v=13"></script>
+  <script src="js/board.js?v=13"></script>
+  <script src="js/app.js?v=13"></script>
+  <script src="js/share.js?v=13"></script>
   <script>
     // 로그인 모달
     const authModal = document.getElementById('authModal');
     const authBtn = document.getElementById('authBtn');
     const authClose = document.getElementById('authClose');
     const authForm = document.getElementById('authForm');
-    const authEmail = document.getElementById('authEmail');
+    const authId = document.getElementById('authId');
     const authPassword = document.getElementById('authPassword');
     const authUsername = document.getElementById('authUsername');
     const authSubmit = document.getElementById('authSubmit');
     const authMsg = document.getElementById('authMsg');
     const authToggle = document.getElementById('authToggle');
+    const authTitle = document.getElementById('authTitle');
+    const authIntro = document.getElementById('authIntro');
     const boardWrite = document.getElementById('boardWrite');
     const boardNewBtn = document.getElementById('boardNewBtn');
     const boardForm = document.getElementById('boardForm');
     const boardCancel = document.getElementById('boardCancel');
     const boardList = document.getElementById('boardList');
 
-    let isSignUp = false;
+    let isSignUp = true;
 
-    authBtn.addEventListener('click', () => {
+    function setAuthMode(signup) {
+      isSignUp = signup;
+      authTitle.textContent = signup ? '프로필 만들기' : '로그인';
+      authIntro.hidden = !signup;
+      authSubmit.textContent = signup ? '프로필 만들기' : '로그인';
+      authUsername.hidden = !signup;
+      authToggle.innerHTML = signup
+        ? '이미 프로필이 있어요 <a href="javascript:" style="color:var(--primary);font-weight:700">로그인</a>'
+        : '프로필이 없으신가요? <a href="javascript:" style="color:var(--primary);font-weight:700">프로필 만들기</a>';
+      authMsg.textContent = '';
+    }
+
+    function openAuth(signup) {
+      setAuthMode(signup);
       authModal.hidden = false;
-      isSignUp = false;
-      authSubmit.textContent = '로그인';
-      authUsername.hidden = true;
-    });
+      authId.focus();
+    }
+
+    authBtn.onclick = () => openAuth(false);
 
     authClose.addEventListener('click', () => {
       authModal.hidden = true;
@@ -571,32 +587,37 @@
     });
 
     authToggle.addEventListener('click', e => {
+      if (e.target.tagName !== 'A') return;
       e.preventDefault();
-      isSignUp = !isSignUp;
-      authSubmit.textContent = isSignUp ? '가입' : '로그인';
-      authUsername.hidden = !isSignUp;
-      authToggle.innerHTML = isSignUp ? '<a href="javascript:" style="color:var(--primary)">로그인</a>' : '<a href="javascript:" style="color:var(--primary)">회원가입</a>';
+      setAuthMode(!isSignUp);
     });
 
     authForm.addEventListener('submit', async e => {
       e.preventDefault();
-      const email = authEmail.value.trim();
-      const password = authPassword.value.trim();
-      const username = authUsername.value.trim() || email.split('@')[0];
+      const id = authId.value.trim();
+      const password = authPassword.value;
+      const nickname = authUsername.value.trim();
       authMsg.textContent = '';
+
+      if (isSignUp && !/^[a-zA-Z0-9_]{3,20}$/.test(id)) {
+        authMsg.textContent = '아이디는 영문·숫자 3~20자로 지어주세요.';
+        return;
+      }
+      if (password.length < 6) {
+        authMsg.textContent = '비밀번호는 6자 이상이어야 해요.';
+        return;
+      }
       authSubmit.disabled = true;
 
       const result = isSignUp
-        ? await Auth.signUp(email, password, username)
-        : await Auth.signIn(email, password);
+        ? await Auth.signUp(id, password, nickname)
+        : await Auth.signIn(id, password);
 
       if (result.error) {
         authMsg.textContent = result.error;
       } else {
         authModal.hidden = true;
         authForm.reset();
-        authEmail.value = '';
-        authPassword.value = '';
         updateAuthUI();
         loadBoard();
       }
@@ -605,7 +626,7 @@
 
     boardNewBtn.addEventListener('click', () => {
       if (!Auth.getUser()) {
-        authModal.hidden = false;
+        openAuth(true);
         return;
       }
       boardWrite.hidden = false;
@@ -634,11 +655,11 @@
     async function updateAuthUI() {
       const user = Auth.getUser();
       if (user) {
-        authBtn.textContent = user.email.split('@')[0] + ' / 로그아웃';
+        authBtn.textContent = (Auth.getNickname() || '내 프로필') + ' · 로그아웃';
         authBtn.onclick = async () => {
           await Auth.signOut();
           authBtn.textContent = '로그인';
-          authBtn.onclick = null;
+          authBtn.onclick = () => openAuth(false);
           boardWrite.hidden = true;
           boardNewBtn.hidden = false;
           loadBoard();

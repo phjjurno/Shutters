@@ -30,7 +30,7 @@ const Board = (() => {
         },
         body: JSON.stringify({
           user_id: user.id,
-          username: user.email.split('@')[0],
+          username: (Auth.getNickname && Auth.getNickname()) || user.email.split('@')[0],
           content,
           char_id: charId
         })
