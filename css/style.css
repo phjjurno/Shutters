@@ -131,9 +131,12 @@ section{scroll-margin-top:84px}
 .char-svg[data-face="shock"] .f-shock{display:block}
 .char-svg[data-face="squish"] .f-squish{display:block}
 .char-svg[data-face="swollen"] .f-swollen{display:block}
+.char-svg[data-face="plead"] .f-plead{display:block}
 .char-svg[data-face="back"] .f-back{display:block}
 .char-svg[data-face="back"] .accwrap,.char-svg[data-face="back"] .cheekblush{display:none}
 .dizzy-stars{transform-origin:256px 70px;animation:starSpin 1.6s linear infinite}
+.plead-sparks{animation:sparkTwinkle 1.5s ease-in-out infinite}
+@keyframes sparkTwinkle{0%,100%{opacity:.4}50%{opacity:1}}
 @keyframes starSpin{to{transform:rotate(360deg)}}
 
 /* ---------- 뿌셔존 ---------- */
@@ -149,6 +152,9 @@ section{scroll-margin-top:84px}
 .stage:fullscreen .char-hit .char-svg{width:min(56vh,74vw)}
 .stage:-webkit-full-screen{height:100vh;border-radius:0;border:none}
 @media (hover:hover){.stage:hover{cursor:none}}
+/* 오버레이(완전 해소·도망)가 떠 있는 동안은 버튼을 눌러야 하니 기본 커서로 되돌린다 */
+@media (hover:hover){.stage:has(.clear-overlay:not([hidden])):hover{cursor:auto}}
+.stage:has(.clear-overlay:not([hidden])) .tool-cursor{display:none}
 .stage::before{content:'';position:absolute;inset:auto 0 0;height:90px;background:radial-gradient(50% 100% at 50% 100%,#F1EDF1 0%,transparent 100%)}
 .stage.shake{animation:stageShake .26s}
 @keyframes stageShake{0%,100%{transform:translate(0)}25%{transform:translate(-6px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,2px)}}
@@ -281,6 +287,21 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .clear-overlay h3 span{color:var(--green)}
 .clear-overlay p{color:#6b6b6b;font-size:14.5px;margin-bottom:10px}
 .clear-overlay .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* ---------- 공유하기 (완전 해소 오버레이) ---------- */
+.share{margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.share__label{font-size:13.5px;font-weight:700;color:#6b6b6b;margin-bottom:10px}
+.share__btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.share-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:999px;border:1.5px solid var(--border);background:#fff;color:var(--text);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:.15s}
+.share-btn svg{width:16px;height:16px;flex:0 0 auto}
+.share-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(29,28,29,.12)}
+.share-btn:active{transform:scale(.97)}
+.share-btn:disabled{opacity:.55;cursor:default;transform:none;box-shadow:none}
+.share-btn--kakao{background:#FEE500;border-color:#FEE500;color:#191600}
+.share-btn--insta{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);border-color:transparent;color:#fff}
+.share__msg{font-size:12.5px;font-weight:700;min-height:17px;margin:10px 0 0}
+.share__msg.ok{color:var(--green)}
+.share__msg.err{color:#c44}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .confetti{position:absolute;top:-12px;width:10px;height:14px;border-radius:2px;pointer-events:none;z-index:11;animation:confettiFall linear forwards}
 @keyframes confettiFall{to{transform:translateY(500px) rotate(720deg);opacity:.2}}

@@ -151,6 +151,34 @@ function charSVG(c, face = 'normal') {
         <circle cx="200" cy="56" r="11" fill="rgba(255,120,130,.5)"/>
         <g transform="rotate(-18 330 84)"><rect x="300" y="72" width="62" height="23" rx="11" fill="#E8D9A8" stroke="#3A3230" stroke-width="5"/><path d="M318 78 v11 M331 78 v11 M344 78 v11" stroke="#C9B476" stroke-width="4" stroke-linecap="round" fill="none"/></g>
       </g>
+      <!-- 표정: 간절 (공유 카드 — 제발 들어와줘) -->
+      <g class="face f-plead">
+        <!-- 크고 촉촉한 눈망울 -->
+        <ellipse cx="211" cy="177" rx="36" ry="41" fill="#141414"/>
+        <ellipse cx="301" cy="177" rx="36" ry="41" fill="#141414"/>
+        <ellipse cx="211" cy="184" rx="26" ry="30" fill="#43304E"/>
+        <ellipse cx="301" cy="184" rx="26" ry="30" fill="#43304E"/>
+        <circle cx="198" cy="162" r="14" fill="#fff"/>
+        <circle cx="288" cy="162" r="14" fill="#fff"/>
+        <circle cx="224" cy="194" r="7" fill="#fff" opacity=".9"/>
+        <circle cx="314" cy="194" r="7" fill="#fff" opacity=".9"/>
+        <ellipse cx="211" cy="206" rx="20" ry="8" fill="#fff" opacity=".4"/>
+        <ellipse cx="301" cy="206" rx="20" ry="8" fill="#fff" opacity=".4"/>
+        <!-- 그렁그렁 맺힌 눈물 -->
+        <path class="tear" d="M176 199 q12 20 0 30 q-12 -10 0 -30z" opacity=".85"/>
+        <path class="tear" d="M336 199 q12 20 0 30 q-12 -10 0 -30z" opacity=".85"/>
+        <!-- 파르르 떨리는 작은 입 -->
+        <path class="fx" d="M238 248 q9 -10 18 0 q9 10 18 0" stroke-width="10"/>
+        <!-- 발그레 -->
+        <circle cx="172" cy="224" r="25" fill="rgba(255,120,130,.5)"/>
+        <circle cx="340" cy="224" r="25" fill="rgba(255,120,130,.5)"/>
+        <!-- 초롱초롱 반짝이 -->
+        <g class="plead-sparks">
+          <path class="star" d="M150 96 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2z"/>
+          <path class="star" d="M358 88 l6 12 13 2 -10 9 2 13 -11 -6 -11 6 2 -13 -10 -9 13 -2z"/>
+          <path class="star" d="M256 32 l5 11 12 2 -9 8 2 12 -10 -6 -10 6 2 -12 -9 -8 12 -2z"/>
+        </g>
+      </g>
       <!-- 표정: 뒷모습 (도망) — 얼굴 대신 등 재봉선 -->
       <g class="face f-back">
         <path d="M256 60 v226" stroke="rgba(0,0,0,.25)" stroke-width="6" stroke-dasharray="11 9" fill="none"/>
