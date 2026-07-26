@@ -5,7 +5,8 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
+    # mousekm(및 자기 자신)에서만 iframe 임베드 허용 — 그 외 사이트의 프레이밍은 차단(클릭재킹 방어 유지)
+    Content-Security-Policy = "frame-ancestors 'self' https://mousekm.ws-qf.com"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
