@@ -281,6 +281,22 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .tool-cursor[data-tool="grab"]{background:#3A3230}
 @media (hover:hover){.stage.has-cursor .tool-cursor{display:flex}}
 
+/* 터치용 도구 바 (모바일·태블릿) — 스테이지 하단 오버레이 */
+.stage-tools{position:absolute;left:0;right:0;bottom:0;z-index:9;display:none;gap:6px;justify-content:center;align-items:flex-end;flex-wrap:nowrap;overflow-x:auto;padding:10px 8px;background:linear-gradient(to top,rgba(246,244,246,.96) 55%,rgba(246,244,246,0));pointer-events:none}
+.stool{flex:0 0 auto;width:54px;height:54px;border-radius:15px;border:1.5px solid var(--border);background:rgba(255,255,255,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;cursor:pointer;pointer-events:auto;-webkit-tap-highlight-color:transparent;transition:transform .1s,background .15s,border-color .15s}
+.stool .icon{width:23px;height:23px;color:var(--primary);stroke-width:1.6}
+.stool__key{font-size:9px;font-weight:800;color:#9a8f9a;line-height:1}
+.stool:active{transform:scale(.92)}
+.stool.is-on{border-color:var(--primary);background:var(--primary);box-shadow:0 5px 14px rgba(74,21,75,.32)}
+.stool.is-on .icon{color:#fff}
+.stool.is-on .stool__key{color:rgba(255,255,255,.85)}
+.stool--water{border-color:var(--accent)}
+.stool--water .icon{color:var(--accent)}
+@media (pointer:coarse){
+  .stage-tools{display:flex}
+  .stage:has(.clear-overlay:not([hidden])) .stage-tools{display:none}
+}
+
 /* 해소 완료 오버레이 & 색종이 */
 .clear-overlay{position:absolute;inset:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:safe center;gap:10px;text-align:center;padding:24px;overflow-y:auto;animation:fadeIn .4s ease-out}
 .clear-overlay>div{width:100%}

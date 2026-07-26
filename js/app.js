@@ -392,9 +392,21 @@ toolBox.innerHTML = Object.entries(TOOLS).map(([id, t]) => `
     <i class="cool" id="waterCool"></i>
   </button>`;
 
+/* 모바일·태블릿용 터치 도구 바 (스테이지 하단) — 아이콘 칩 */
+const stageTools = $('#stageTools');
+stageTools.innerHTML = Object.entries(TOOLS).map(([id, t]) => `
+  <button class="stool ${id === state.tool ? 'is-on' : ''}" data-tool="${id}" title="${t.label}" aria-label="${t.label}">
+    <b class="stool__key">${t.key}</b>
+    <svg class="icon" viewBox="0 0 24 24">${t.icon}</svg>
+  </button>`).join('') + `
+  <button class="stool stool--water" id="stageWaterBtn" title="${WATER.label}" aria-label="${WATER.label}">
+    <b class="stool__key">↵</b>
+    <svg class="icon" viewBox="0 0 24 24">${WATER.icon}</svg>
+  </button>`;
+
 function selectTool(id) {
   state.tool = id;
-  $$('.tool-btn[data-tool]', toolBox).forEach(b => b.classList.toggle('is-on', b.dataset.tool === id));
+  $$('.tool-btn[data-tool], .stool[data-tool]').forEach(b => b.classList.toggle('is-on', b.dataset.tool === id));
   toolCursor.dataset.tool = id;
   toolCursor.innerHTML = `<svg class="icon" viewBox="0 0 24 24">${TOOLS[id].icon}</svg>`;
 }
@@ -402,7 +414,12 @@ toolBox.addEventListener('click', e => {
   const btn = e.target.closest('[data-tool]');
   if (btn) { selectTool(btn.dataset.tool); markInput(); }
 });
+stageTools.addEventListener('click', e => {
+  const btn = e.target.closest('[data-tool]');
+  if (btn) { selectTool(btn.dataset.tool); markInput(); }
+});
 $('#waterBtn').addEventListener('click', () => splashWater());
+$('#stageWaterBtn').addEventListener('click', e => { e.stopPropagation(); splashWater(); });
 selectTool('punch');
 
 /* 파티클 */
