@@ -1039,8 +1039,27 @@ ytInput.addEventListener('keydown', e => { if (e.key === 'Enter') { e.stopPropag
 $('#shuffleBtn').addEventListener('click', () => { state.musicStarted = true; shufflePlay(); });
 
 const musicIcon = '<svg class="icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>';
-$('#ytPresets').innerHTML = PULSE_TRACKS.map(t =>
-  `<button class="preset" data-id="${t.id}">${musicIcon}${t.label}</button>`).join('');
+function renderPresets() {
+  $('#ytPresets').innerHTML = PULSE_TRACKS.map(t =>
+    `<button class="preset" data-id="${t.id}">${musicIcon}${t.label}</button>`).join('');
+  const cur = ytFrame.getAttribute('src') || '';
+  markActiveChip((PULSE_TRACKS.find(t => cur.includes(t.id)) || {}).id || '');
+}
+renderPresets();
+
+/* PULSE ORIGIN 채널의 최신 업로드를 받아 플레이리스트를 최신화 (실패 시 폴백 유지) */
+(async () => {
+  try {
+    const res = await fetch('/.netlify/functions/pulse-tracks', { cache: 'no-store' });
+    if (!res.ok) return;
+    const list = await res.json();
+    if (Array.isArray(list) && list.length >= 3) {
+      PULSE_TRACKS = list;
+      renderPresets();
+    }
+  } catch (e) { /* 로컬·오프라인 등 — 폴백 목록 유지 */ }
+})();
+
 document.addEventListener('click', e => {
   const chip = e.target.closest('.preset[data-id]');
   if (!chip) return;
