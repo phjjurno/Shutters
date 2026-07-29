@@ -1012,7 +1012,7 @@ function playTrack(t, source) {
   ytFrame.src = ytSrc(t.id, auto);
   ytError.hidden = true;
   $('#nowPlaying').innerHTML = `지금 재생 · <b>${t.label}</b>` +
-    (source === 'pulse' ? ' <span class="np-badge">PULSE ORIGIN</span>' : '');
+    (source === 'pulse' ? ' <span class="np-badge">PULSEORIGN</span>' : '');
   markActiveChip(t.id);
 }
 /* 자동/셔플: 69% 확률로 PULSE ORIGIN 우선 */
