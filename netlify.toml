@@ -4,6 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  # config.js 의 Supabase anon 키·Kakao JS 키는 공개용 클라이언트 키(RLS·도메인 허용목록으로 보호)라
+  # 실제 비밀이 아니다. Netlify 비밀 스캐너가 이를 오탐해 빌드를 막으므로 끈다.
+  SECRETS_SCAN_ENABLED = "false"
 
 [functions]
   directory = "netlify/functions"
