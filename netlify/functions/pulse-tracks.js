@@ -47,15 +47,27 @@ async function collect() {
   const out = [];
   for (const e of entries) {
     const idM = e.match(/<yt:videoId>([^<]+)<\/yt:videoId>/);
-    const tM = e.match(/<title>([\s\S]*?)<\/title>/);
     if (!idM) continue;
-    const rawTitle = tM ? tM[1] : '';
-    if (/#\s*shorts|\bshorts\b/i.test(decodeEntities(rawTitle))) continue; // 숏츠 제외 (배경음악 부적합)
+    // 롱폼/쇼츠 판별: RSS link href 가 /shorts/ 면 쇼츠 → 제외 (제목 추측보다 정확)
+    const href = (e.match(/<link[^>]*rel="alternate"[^>]*href="([^"]+)"/) || [])[1] || '';
+    if (href.includes('/shorts/')) continue;
+    const rawTitle = (e.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || '';
     const label = cleanLabel(rawTitle);
     if (label) out.push({ id: idM[1], label });
     if (out.length >= MAX) break;
   }
   return out;
+}
+
+/* 최신 롱폼을 앞에 두고, 부족하면 기존 롱폼 믹스로 채운다 (중복 id 제거) */
+function withFallback(list) {
+  const seen = new Set(list.map(t => t.id));
+  const merged = list.slice();
+  for (const f of FALLBACK) {
+    if (merged.length >= 8) break;
+    if (!seen.has(f.id)) { merged.push(f); seen.add(f.id); }
+  }
+  return merged;
 }
 
 exports.handler = async () => {
@@ -65,7 +77,7 @@ exports.handler = async () => {
   };
   try {
     const tracks = await collect();
-    return { statusCode: 200, headers, body: JSON.stringify(tracks.length >= 3 ? tracks : FALLBACK) };
+    return { statusCode: 200, headers, body: JSON.stringify(withFallback(tracks)) };
   } catch (e) {
     return { statusCode: 200, headers, body: JSON.stringify(FALLBACK) };
   }

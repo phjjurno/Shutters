@@ -987,19 +987,46 @@ function parseYouTube(url) {
 function markActiveChip(id) {
   $$('.preset').forEach(p => p.classList.toggle('is-on', p.dataset.id === id));
 }
-/* YouTube IFrame API 메시지 수신 — onReady 시 볼륨 50% 적용 */
+/* 트랙 로드마다 listening 등록 — 이래야 재생 상태변화(종료) 이벤트가 온다 */
+function ytRegister() {
+  try {
+    ytFrame.contentWindow.postMessage(
+      JSON.stringify({ event: 'listening', id: 'shutress-yt', channel: 'widget' }),
+      'https://www.youtube.com'
+    );
+  } catch (_) {}
+}
+ytFrame.addEventListener('load', () => { ytRegister(); setTimeout(ytRegister, 600); });
+
+/* YouTube IFrame API 메시지 수신 — onReady 시 볼륨 50%, 곡 종료 시 다음 곡 */
 window.addEventListener('message', e => {
   if (e.origin !== 'https://www.youtube.com') return;
-  try {
-    const d = JSON.parse(e.data);
-    if (d.event === 'onReady' && ytFrame.contentWindow) {
-      ytFrame.contentWindow.postMessage(
-        JSON.stringify({ event: 'command', func: 'setVolume', args: [50] }),
-        'https://www.youtube.com'
-      );
-    }
-  } catch (_) {}
+  let d;
+  try { d = JSON.parse(e.data); } catch (_) { return; }
+  if (d.event === 'onReady' && ytFrame.contentWindow) {
+    ytFrame.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'setVolume', args: [50] }),
+      'https://www.youtube.com'
+    );
+  }
+  // 재생 상태 0(ENDED) → 자동으로 다음 곡
+  const ps = d.event === 'onStateChange' ? d.info
+    : (d.event === 'infoDelivery' && d.info && typeof d.info.playerState === 'number') ? d.info.playerState
+    : null;
+  if (ps === 0) nextTrack();
 });
+
+/* 현재 곡 다음으로 자동 전환 (PULSE_TRACKS 순환, 그 외엔 셔플). 종료 이벤트 중복 방지 */
+let lastAdvance = 0;
+function nextTrack() {
+  const now = Date.now();
+  if (now - lastAdvance < 3000) return;
+  lastAdvance = now;
+  const cur = ytFrame.getAttribute('src') || '';
+  const idx = PULSE_TRACKS.findIndex(t => cur.includes(t.id));
+  if (idx >= 0) playTrack(PULSE_TRACKS[(idx + 1) % PULSE_TRACKS.length], 'pulse');
+  else shufflePlay();
+}
 
 function ytSrc(id, autoplay) {
   const origin = encodeURIComponent(window.location.origin);
