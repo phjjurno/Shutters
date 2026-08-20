@@ -44,10 +44,10 @@ design/           # 두두(DUDU) 캐릭터 원본 스타터 키트 (배포 제�
 
 ## 집계·랭킹
 
-기본은 이 기기(localStorage) 전용. 전국 통합 랭킹은 `SETUP-BACKEND.md` 대로
+기본은 이 기기(localStorage) 전용. 전국 통합 랭킹은 `docs/SETUP-BACKEND.md` 대로
 Supabase 무료 프로젝트를 만들고 `js/config.js`에 키를 넣으면 켜집니다(개인정보 미전송).
 
 ## 배포
 
-`DEPLOY.md`의 체크리스트를 따라가세요. 폴더 전체를 Netlify Drop / Vercel /
+`docs/DEPLOY.md`의 체크리스트를 따라가세요. 폴더 전체를 Netlify Drop / Vercel /
 GitHub Pages 등 정적 호스팅에 올리면 끝입니다.

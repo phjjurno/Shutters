@@ -3,7 +3,7 @@
    전역(전국) 통합 랭킹을 켜려면 아래 두 값을 채우세요.
    비워 두면 자동으로 "이 기기(localStorage) 전용"으로 동작합니다.
 
-   설정 방법은 같은 폴더의 SETUP-BACKEND.md 를 참고하세요.
+   설정 방법은 프로젝트 루트의 docs/SETUP-BACKEND.md 를 참고하세요.
    - supabaseUrl   : 예) https://xxxxxxxx.supabase.co
    - supabaseAnonKey: Supabase 프로젝트의 anon public 키 (공개돼도 되는 키)
    - kakaoJsKey    : 카카오 개발자 JavaScript 키 (공유 도메인 등록 필수, 공개돼도 되는 키)
