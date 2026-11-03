@@ -1,0 +1,16 @@
+# Cloudflare Pages 헤더 (netlify.toml 에서 이식)
+# frame-ancestors: mousekm.ws-qf.com 이 서트레스를 iframe 으로 띄우므로 반드시 유지
+
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://mousekm.ws-qf.com
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/css/*
+  Cache-Control: public, max-age=86400
+
+/js/*
+  Cache-Control: public, max-age=86400
+
+/assets/*
+  Cache-Control: public, max-age=604800

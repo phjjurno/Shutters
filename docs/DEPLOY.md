@@ -4,7 +4,7 @@
 
 ## 1. 배포 전 — 파일 손보기
 
-- [ ] **도메인 치환**: 실제 도메인이 `shutress.com`이 아니라면 아래 파일에서 일괄 치환
+- [x] **도메인 치환** (2026-11: shutress.ws-qf.com 으로 완료): 실제 도메인이 `shutress.com`이 아니라면 아래 파일에서 일괄 치환
   - `index.html` — `<link rel="canonical">`, `og:url`, `og:image`, `twitter:image`, JSON-LD의 모든 `url`
   - `sitemap.xml` — `<loc>` 3곳
   - `robots.txt` — `Sitemap:` 줄
@@ -16,25 +16,21 @@
 - [ ] **design/ 폴더 제외(선택)**: 캐릭터 원본 키트는 서비스에 불필요 — 용량을 아끼려면
   배포 대상에서 빼도 됩니다(사이트 동작과 무관).
 
-## 2. 호스팅에 올리기 (셋 중 하나)
+## 2. 호스팅 (Cloudflare Pages)
 
-### A. Netlify Drop (가장 빠름, 무료)
-1. https://app.netlify.com/drop 접속
-2. `bbusyeo` 폴더를 브라우저로 드래그 → 즉시 배포
-3. Site settings → Domain management 에서 도메인 연결
+2026-11 Netlify 팀 크레딧 소진으로 사이트가 내려가면서 Cloudflare Pages 로 이전했다.
+GitHub `phjjurno/Shutters` 의 `main` 에 푸시하면 자동 배포된다.
 
-### B. Vercel
-```bash
-cd "Mini Site/bbusyeo"
-npx vercel --prod        # 로그인 후 안내 따라가기
-```
+| 설정 | 값 |
+|------|-----|
+| Framework preset | None |
+| Build command | (비움) |
+| Build output directory | `/` |
+| Custom domain | `shutress.ws-qf.com` |
 
-### C. GitHub Pages
-1. 새 저장소에 `bbusyeo` 내용물을 푸시 (저장소 루트에 index.html이 오도록)
-2. Settings → Pages → Branch: main / root → Save
-3. 커스텀 도메인 연결 시 CNAME 설정
-
-> 어느 방법이든 **HTTPS가 자동 적용**되는지 확인 (애드센스 필수).
+- `_headers` — `frame-ancestors` 로 mousekm.ws-qf.com 의 iframe 임베드만 허용 (지우면 mousekm 에서 서트레스가 안 뜬다)
+- `functions/api/pulse-tracks.js` — PULSE ORIGIN 롱폼 목록, Cache API 30분
+- js 를 고치면 `index.html` 의 `?v=N` 을 전부 올릴 것 (js/css 는 1일 캐시)
 
 ## 3. 배포 직후 — 동작 확인
 

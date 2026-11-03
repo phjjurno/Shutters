@@ -1077,7 +1077,7 @@ renderPresets();
 /* PULSE ORIGIN 채널의 최신 업로드를 받아 플레이리스트를 최신화 (실패 시 폴백 유지) */
 (async () => {
   try {
-    const res = await fetch('/.netlify/functions/pulse-tracks', { cache: 'no-store' });
+    const res = await fetch('/api/pulse-tracks', { cache: 'no-store' });
     if (!res.ok) return;
     const list = await res.json();
     if (Array.isArray(list) && list.length >= 3) {

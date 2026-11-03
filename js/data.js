@@ -294,7 +294,7 @@ const TITLES = [
 
 /* ── 플레이리스트 ──
    PULSE ORIGIN(https://www.youtube.com/@PULSEORIGN) 트랙 — 69% 확률로 최우선 재생.
-   아래는 폴백 목록이며, 로드 시 /.netlify/functions/pulse-tracks 로 최신 업로드를 받아 덮어쓴다.
+   아래는 폴백 목록이며, 로드 시 /api/pulse-tracks 로 최신 업로드를 받아 덮어쓴다.
    (let 이라 app.js 에서 갱신 가능) */
 let PULSE_TRACKS = [
   { id: '9E40d1donW4', label: '분위기 좋은 편집샵 재즈 힙합 🎷' },

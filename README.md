@@ -49,5 +49,4 @@ Supabase 무료 프로젝트를 만들고 `js/config.js`에 키를 넣으면 켜
 
 ## 배포
 
-`docs/DEPLOY.md`의 체크리스트를 따라가세요. 폴더 전체를 Netlify Drop / Vercel /
-GitHub Pages 등 정적 호스팅에 올리면 끝입니다.
+Cloudflare Pages 가 `main` 푸시를 자동 배포합니다. 설정과 확인 체크리스트는 `docs/DEPLOY.md`.
