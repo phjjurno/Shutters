@@ -439,8 +439,6 @@ kbd{background:#F1EDF1;border:1px solid var(--border);border-bottom-width:2px;bo
 .yt__tip{font-size:12px;color:#a0a0a0;padding-left:6px}
 
 /* ---------- 광고 슬롯 (애드센스 승인 후 코드 삽입) ---------- */
-.ad-placeholder{max-width:1080px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
-.ad-placeholder>div{border:1.5px dashed var(--border);border-radius:16px;padding:26px;text-align:center;color:#c2c2c2;font-size:12px;font-weight:700;letter-spacing:.1em}
 
 /* ---------- 이렇게 즐기세요 (가이드) ---------- */
 .guide-steps{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
